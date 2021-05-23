@@ -1,4 +1,4 @@
-import "./App.css";
+import "./dist/css/App.min.css";
 
 function App() {
   return (
