@@ -1,5 +1,3 @@
-import "../../dist/css/song.min.css";
-
 const Song = () => {
   return (
     <div className="song-container">

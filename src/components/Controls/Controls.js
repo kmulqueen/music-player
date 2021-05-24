@@ -1,4 +1,3 @@
-import "../../dist/css/controls.min.css";
 import { Next, Pause, Play, Previous } from "grommet-icons";
 
 const Controls = () => {

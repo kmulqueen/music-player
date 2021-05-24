@@ -5,7 +5,6 @@ import Controls from "./components/Controls";
 function App() {
   return (
     <>
-      <h1>Music Player App</h1>
       <Song />
       <Controls />
     </>

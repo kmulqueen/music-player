@@ -7,3 +7,6 @@
 html {
     font-size: 10px;
 }
+
+@import "./components/Controls/controls";
+@import "./components/Song/song";
