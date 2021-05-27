@@ -8,5 +8,9 @@ html {
     font-size: 10px;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 @import "./components/Controls/controls";
 @import "./components/Song/song";

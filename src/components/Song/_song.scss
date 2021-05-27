@@ -4,4 +4,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    img {
+        width: 20%;
+        border-radius: 50%;
+    }
+
+    h2 {
+        font-size: 2rem;
+        padding: 3em 1em 1em 1em;
+        color: rgb(60,60,60);
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
 }
