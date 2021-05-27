@@ -7,10 +7,16 @@ import data from "./data";
 function App() {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <>
       <Song song={currentSong} />
-      <Controls />
+      <Controls
+        song={currentSong}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+      />
     </>
   );
 }
