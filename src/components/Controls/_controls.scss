@@ -7,13 +7,14 @@
 }
 
 .time-control {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid: 1fr / minmax(4.5rem, max-content) 1fr minmax(4.5rem, max-content);
+    place-items: center;
     width: 50%;
 
     input {
         width: 100%;
-        padding: 1em 2em;
+        padding: 1em 0;
     }
 
     p {

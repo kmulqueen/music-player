@@ -4,10 +4,17 @@ import { Next, Pause, Play, Previous } from "grommet-icons";
 const Controls = ({ song, setIsPlaying, isPlaying }) => {
   const audioRef = useRef(null);
   const [songTime, setSongTime] = useState({
-    currentTime: null,
-    duration: null,
+    currentTime: 0,
+    duration: 0,
   });
 
+  const dragHandler = (e) => {
+    audioRef.current.currentTime = e.target.value;
+    setSongTime({
+      ...songTime,
+      currentTime: e.target.value,
+    });
+  };
   const nextSongHandler = () => {
     console.log("next");
   };
@@ -50,7 +57,14 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
         <p className="time-control__start">
           {formatTime(songTime.currentTime)}
         </p>
-        <input type="range" name="time-control" />
+        <input
+          type="range"
+          name="time-control"
+          min={0}
+          max={songTime.duration}
+          value={songTime.currentTime}
+          onChange={dragHandler}
+        />
         <p className="time-control__end">
           {formatRemainingTime(songTime.currentTime, songTime.duration)}
         </p>
