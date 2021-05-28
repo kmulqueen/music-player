@@ -1,8 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Next, Pause, Play, Previous } from "grommet-icons";
 
 const Controls = ({ song, setIsPlaying, isPlaying }) => {
   const audioRef = useRef(null);
+  const [songTime, setSongTime] = useState({
+    currentTime: null,
+    duration: null,
+  });
 
   const nextSongHandler = () => {
     console.log("next");
@@ -18,12 +22,38 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
   const previousSongHandler = () => {
     console.log("previous");
   };
+  const timeUpdateHandler = (e) => {
+    const currentTime = e.target.currentTime;
+    const duration = e.target.duration;
+    setSongTime({
+      ...songTime,
+      currentTime,
+      duration,
+    });
+  };
+
+  function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    const secondsWithZero = String(seconds).padStart(2, "0");
+    return `${minutes}:${secondsWithZero}`;
+  }
+
+  function formatRemainingTime(currentTime, duration) {
+    const remainingTime = duration - currentTime;
+    return `-${formatTime(remainingTime)}`;
+  }
+
   return (
     <div className="controls-container">
       <div className="time-control">
-        <p className="time-control__start">Start time</p>
+        <p className="time-control__start">
+          {formatTime(songTime.currentTime)}
+        </p>
         <input type="range" name="time-control" />
-        <p className="time-control__end">End time</p>
+        <p className="time-control__end">
+          {formatRemainingTime(songTime.currentTime, songTime.duration)}
+        </p>
       </div>
       <div className="play-control">
         <Previous onClick={previousSongHandler} />
@@ -34,7 +64,12 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
         )}
         <Next onClick={nextSongHandler} />
       </div>
-      <audio ref={audioRef} src={song.audio}></audio>
+      <audio
+        ref={audioRef}
+        src={song.audio}
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
+      ></audio>
     </div>
   );
 };
