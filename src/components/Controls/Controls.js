@@ -52,7 +52,7 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
   }
 
   return (
-    <div className="controls-container">
+    <section className="controls-container">
       <div className="time-control">
         <p className="time-control__start">
           {formatTime(songTime.currentTime)}
@@ -84,7 +84,7 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
       ></audio>
-    </div>
+    </section>
   );
 };
 

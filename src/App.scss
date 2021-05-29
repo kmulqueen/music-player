@@ -14,3 +14,11 @@ body {
 
 @import "./components/Controls/controls";
 @import "./components/Song/song";
+@import "./components/Library/library";
+@import "./components/LibrarySongItem/library-song-item";
+
+.app-container {
+    display: grid;
+    grid: repeat(2, auto) / auto 1fr;
+    height: 100vh;
+}

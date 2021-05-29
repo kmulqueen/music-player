@@ -1,0 +1,31 @@
+.song-item {
+    display: grid;
+    grid: repeat(2, 1fr) / auto 1fr;
+    gap: 1em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        -webkit-backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+        backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    }
+
+    &__album {
+        height: 10rem;
+        grid-row: span 2;
+        z-index: 1;
+    }
+
+    &__title {
+        align-self: end;
+        z-index: 1;
+        color: #FFF;
+    }
+
+    &__artist {
+        z-index: 1;
+        color: #FFF;
+    }
+
+}

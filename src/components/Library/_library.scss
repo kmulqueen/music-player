@@ -1,0 +1,51 @@
+.library {
+    max-height: 100vh;
+    grid-row: span 2;
+    display: grid;
+    grid: max-content auto / 1fr;
+    
+
+    &__song-list {
+        visibility: unset;
+        max-height: 100%;
+        grid-row: 2;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        background: black;
+        box-shadow: 2px 2px 50px gray;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
+
+    &__song-list-hidden {
+        visibility: hidden;
+        overflow: hidden;
+        max-height: 100%;
+    }
+
+    .library__heading {
+        text-align: center;
+        width: 100%;
+        padding: 1em 0;
+        cursor: pointer;
+
+        &--inactive {
+            &:hover {
+                background: black;
+                color: #FFF;
+            }
+        }
+
+        &--active {
+            background: black;
+            color: #FFF;
+            &:hover {
+                background: #4D4D4D;
+            }
+        }
+    }
+
+    
+}
