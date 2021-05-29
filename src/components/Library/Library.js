@@ -9,16 +9,6 @@ const Library = ({ songs }) => {
   };
   return (
     <section className="library">
-      {/* <h2
-        onClick={toggleLibraryHandler}
-        className={
-          showLibrary
-            ? "library__heading library__heading--active"
-            : "library__heading library__heading--inactive"
-        }
-      >
-        Library
-      </h2> */}
       <div
         onClick={toggleLibraryHandler}
         className={
