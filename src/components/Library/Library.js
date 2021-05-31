@@ -1,11 +1,14 @@
 import { useState } from "react";
 import LibrarySongItem from "../LibrarySongItem";
 
-const Library = ({ songs }) => {
+const Library = ({ songs, setCurrentSong, currentSong }) => {
   const [showLibrary, setShowLibrary] = useState(false);
   const toggleLibraryHandler = (e) => {
     e.stopPropagation();
     setShowLibrary(!showLibrary);
+  };
+  const songSelectHandler = (song) => {
+    setCurrentSong(song);
   };
   return (
     <section className="library">
@@ -25,7 +28,12 @@ const Library = ({ songs }) => {
         }
       >
         {songs.map((song, i) => (
-          <LibrarySongItem song={song} key={`${song.name}-${i}`} />
+          <LibrarySongItem
+            song={song}
+            key={`${song.name}-${i}`}
+            songSelectHandler={songSelectHandler}
+            currentSong={currentSong}
+          />
         ))}
       </ul>
     </section>

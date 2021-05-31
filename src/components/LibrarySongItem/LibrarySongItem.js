@@ -1,7 +1,13 @@
-const LibrarySongItem = ({ song }) => {
-  console.log(song);
+const LibrarySongItem = ({ song, songSelectHandler, currentSong }) => {
+  const selectSong = (e) => {
+    e.stopPropagation();
+    songSelectHandler(song);
+  };
   return (
-    <div className="song-item">
+    <div
+      className={`song-item ${song.id === currentSong.id ? "selected" : ""}`}
+      onClick={selectSong}
+    >
       <img
         src={song.cover}
         alt={`Album cover for ${song.name} by ${song.artist}`}

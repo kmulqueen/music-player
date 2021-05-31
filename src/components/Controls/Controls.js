@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Next, Pause, Play, Previous } from "grommet-icons";
 
 const Controls = ({ song, setIsPlaying, isPlaying }) => {
@@ -31,7 +31,7 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
   };
   const timeUpdateHandler = (e) => {
     const currentTime = e.target.currentTime;
-    const duration = e.target.duration;
+    const duration = e.target.duration || 0;
     setSongTime({
       ...songTime,
       currentTime,
@@ -50,6 +50,13 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
     const remainingTime = duration - currentTime;
     return `-${formatTime(remainingTime)}`;
   }
+
+  useEffect(() => {
+    let playPromise = audioRef.current[isPlaying ? "play" : "pause"]();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {});
+    }
+  }, [isPlaying, song]);
 
   return (
     <section className="controls-container">
