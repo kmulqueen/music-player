@@ -6,13 +6,14 @@
     
 
     &__song-list {
-        visibility: unset;
         max-height: 100%;
         grid-row: 2;
         overflow-y: scroll;
         scrollbar-width: none;
         background: black;
         box-shadow: 2px 2px 50px gray;
+        transform: translateX(0);
+        transition: transform .35s ease-in-out;
 
         &::-webkit-scrollbar {
             width: 0;
@@ -20,27 +21,56 @@
     }
 
     &__song-list-hidden {
-        visibility: hidden;
         overflow: hidden;
         max-height: 100%;
+        background: black;
+        box-shadow: 2px 2px 50px gray;
+        transform: translateX(-120%);
+        transition: transform .35s ease-in-out;
     }
 
     .library__heading {
-        text-align: center;
         width: 100%;
         padding: 1em 0;
         cursor: pointer;
+        display: grid;
+        grid: 1fr / repeat(2, 1fr);
+        align-items: center;
+        gap: 2em;
+
+        h2 {
+            justify-self: end;
+        }
+
+        
 
         &--inactive {
+            transition: background .3s ease-in-out, color .3s ease-in-out;
+            svg {
+                stroke:black;
+                transition: stroke .3s ease-in-out;
+            }
             &:hover {
                 background: black;
                 color: #FFF;
+
+                svg {
+                    stroke:#FFF;
+                    transition: stroke .3s ease-in-out;
+                }
             }
+            
         }
 
         &--active {
             background: black;
             color: #FFF;
+            transition: background .3s ease-in-out, color .3s ease-in-out;
+
+            svg {
+                stroke:#FFF;
+                transition: stroke .3s ease-in-out;
+            }
             &:hover {
                 background: #4D4D4D;
             }

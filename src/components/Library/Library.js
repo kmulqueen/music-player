@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LibrarySongItem from "../LibrarySongItem";
+import { Music } from "grommet-icons";
 
 const Library = ({ songs, setCurrentSong, currentSong }) => {
   const [showLibrary, setShowLibrary] = useState(false);
@@ -21,6 +22,7 @@ const Library = ({ songs, setCurrentSong, currentSong }) => {
         }
       >
         <h2>Library</h2>
+        <Music />
       </div>
       <ul
         className={
