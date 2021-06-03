@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Next, Pause, Play, Previous } from "grommet-icons";
 
-const Controls = ({ song, setIsPlaying, isPlaying }) => {
+const Controls = ({ song, songs, setIsPlaying, isPlaying, setCurrentSong }) => {
   const audioRef = useRef(null);
   const [songTime, setSongTime] = useState({
     currentTime: 0,
@@ -16,7 +16,12 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
     });
   };
   const nextSongHandler = () => {
-    console.log("next");
+    const currentSongIndex = findCurrentSongIndex();
+    if (currentSongIndex < songs.length - 1) {
+      setCurrentSong(songs[currentSongIndex + 1]);
+    } else {
+      setCurrentSong(songs[0]);
+    }
   };
   const pauseSongHandler = () => {
     audioRef.current.pause();
@@ -27,7 +32,12 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
     setIsPlaying(true);
   };
   const previousSongHandler = () => {
-    console.log("previous");
+    const currentSongIndex = findCurrentSongIndex();
+    if (currentSongIndex > 0) {
+      setCurrentSong(songs[currentSongIndex - 1]);
+    } else {
+      setCurrentSong(songs[songs.length - 1]);
+    }
   };
   const timeUpdateHandler = (e) => {
     const currentTime = e.target.currentTime;
@@ -38,6 +48,13 @@ const Controls = ({ song, setIsPlaying, isPlaying }) => {
       duration,
     });
   };
+
+  function findCurrentSongIndex() {
+    const currentSongIndex = songs.findIndex(
+      (element) => element.id === song.id
+    );
+    return currentSongIndex;
+  }
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
