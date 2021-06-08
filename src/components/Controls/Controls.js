@@ -107,6 +107,7 @@ const Controls = ({ song, songs, setIsPlaying, isPlaying, setCurrentSong }) => {
         src={song.audio}
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
+        onEnded={nextSongHandler}
       ></audio>
     </section>
   );
